@@ -7,3 +7,8 @@ before_install:
   - sudo add-apt-repository "http://dl.openfoam.org/ubuntu dev" -y
   - sudo apt-get -qq update
   - sudo apt-get install openfoam-dev -y
+
+before_script:
+  - source /opt/openfoam-dev/etc/bashrc
+
+script: ./Allwmake
