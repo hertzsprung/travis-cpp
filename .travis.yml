@@ -2,6 +2,9 @@ dist: trusty
 sudo: required
 language: cpp
 
+env:
+  - TRAVISFOAM_DIR=$TRAVIS_BUILD_DIR
+
 before_install:
   - sudo sh -c "wget -O - http://dl.openfoam.org/gpg.key | apt-key add -"
   - sudo add-apt-repository "http://dl.openfoam.org/ubuntu dev" -y
