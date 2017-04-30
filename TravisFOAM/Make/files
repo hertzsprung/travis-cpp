@@ -1,3 +1,3 @@
 travis.C
 
-LIB = $(FOAM_USER_LIBBIN)/TravisFOAM
+LIB = $(FOAM_USER_LIBBIN)/libTravisFOAM

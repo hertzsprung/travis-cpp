@@ -1,0 +1,6 @@
+EXE_INC = \
+    -I$(TRAVISFOAM_DIR)/TravisFOAM/lnInclude
+
+EXE_LIBS = \
+    -L$(FOAM_USER_LIBBIN) \
+    -lTravisFOAM

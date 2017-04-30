@@ -12,3 +12,5 @@ makeType=${1:-libso}
 }
 
 wmake $makeType TravisFOAM
+wmake testTravisFOAM
+testTravisFOAM

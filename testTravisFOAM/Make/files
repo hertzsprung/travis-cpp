@@ -1,0 +1,4 @@
+testTravisFOAM.C
+test_travis.C
+
+EXE = $(FOAM_USER_APPBIN)/testTravisFOAM
