@@ -27,3 +27,7 @@
 *.exe
 *.out
 *.app
+
+# OpenFOAM
+lnInclude
+linux64GccDPInt32Opt
