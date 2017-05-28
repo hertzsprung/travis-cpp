@@ -4,9 +4,9 @@ Priority: optional
 Maintainer: James Shaw <js102@zepler.net>
 Build-Depends: debhelper (>= 9)
 Standards-Version: 3.9.8
-Homepage: <insert the upstream URL, if relevant>
-#Vcs-Git: https://anonscm.debian.org/collab-maint/travis-cpp.git
-#Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/travis-cpp.git
+#Homepage: <insert the upstream URL, if relevant>
+Vcs-Git: https://github.com/hertzsprung/travis-cpp.git
+Vcs-Browser: https://github.com/hertzsprung/travis-cpp
 
 Package: travis-cpp
 Architecture: amd64
