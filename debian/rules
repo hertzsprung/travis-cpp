@@ -39,7 +39,7 @@ override_dh_auto_build:
 	./override_dh_auto_build.sh
 
 #override_dh_auto_test:
-#TODO: run testTravisFOAM separately from Allwmake
+#	$(FOAM_USER_APPBIN)/testTravisFOAM
 
 override_dh_auto_install:
 	$(INSTALL_PROGRAM) -D $(FOAM_USER_APPBIN)/travisFoamApp $(DESTDIR)$(bindir)/travisFoamApp
