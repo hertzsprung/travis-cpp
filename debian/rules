@@ -41,9 +41,6 @@ override_dh_auto_build:
 #override_dh_auto_test:
 #TODO: run testTravisFOAM separately from Allwmake
 
-#override_dh_prep:
-#TODO: clean build dir
-
 override_dh_auto_install:
 	$(INSTALL_PROGRAM) -D $(FOAM_USER_APPBIN)/travisFoamApp $(DESTDIR)$(bindir)/travisFoamApp
 

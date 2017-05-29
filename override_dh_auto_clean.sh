@@ -1,4 +1,3 @@
 #!/bin/bash
-source $FOAM_BASHRC
 wclean travisFoamApp
-
+rm -rf $DH_ROOT_DIR/build/bin

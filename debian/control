@@ -10,6 +10,6 @@ Vcs-Browser: https://github.com/hertzsprung/travis-cpp
 
 Package: travis-cpp
 Architecture: amd64
-Depends: ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Depends: ${shlibs:Depends}, ${misc:Depends}, openfoam-dev (>= 20170521)
+Description: Example Debian packaging an OpenFOAM application
+ Does nothing particularly useful.
