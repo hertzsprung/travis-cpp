@@ -14,8 +14,8 @@ before_install:
   - sudo apt-get -qq update
 
 install:
-  - sudo apt-get install openfoam-dev devscripts debhelper ruby-bundler -y
-  - sudo bundle install
+  - sudo apt-get install openfoam-dev devscripts debhelper ruby -y
+  - sudo gem install deb-s3
 
 before_script:
   - source /opt/openfoam-dev/etc/bashrc
