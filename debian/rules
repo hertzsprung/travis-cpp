@@ -9,6 +9,7 @@ DESTDIR := debian/travis-cpp
 
 export FOAM_BASHRC = /opt/openfoam-dev/etc/bashrc
 export DH_ROOT_DIR = $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
+export TRAVISFOAM_DIR = $(shell pwd)
 FOAM_USER_APPBIN := $(DH_ROOT_DIR)/build/bin
 # See debhelper(7) (uncomment to enable)
 # output every command that modifies files on the build system.
