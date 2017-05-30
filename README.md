@@ -6,3 +6,5 @@ Testing out travis-ci and debian packaging with some C++ OpenFOAM code.
 To install,
 
     sudo add-apt-repository 'deb http://atmosfoam-apt.s3-website-eu-west-1.amazonaws.com main dev'
+    sudo apt-get update
+    sudo apt-get install travis-cpp
