@@ -31,3 +31,11 @@
 # OpenFOAM
 lnInclude
 linux64GccDPInt32Opt
+
+debian/build
+debian/debhelper-build-stamp
+debian/files
+debian/travis-cpp.debhelper.log
+debian/travis-cpp.substvars
+debian/travis-cpp
+

@@ -3,7 +3,10 @@ sudo: required
 language: cpp
 
 env:
-  - TRAVISFOAM_DIR=$TRAVIS_BUILD_DIR
+  global:
+    - secure: "B3yFizPIRD8+eFcKCC9QXk/VCTWRTDnBM2e15zpF+7awSTO2QVepAXtQxTDsZknZihibtk3T0/g+vaAvGTayZAHKVqeU8ii18GBt4dqFBrPeqJHuxZNxm47xJiRPdsVevNS/nfO8eNBIS3Oq3KIbxfL63R5RgALLJOdBv0JiPaPRJqSKczwH+8GbvHKY/zfrrSdgeLgwaQLiwr+OyCOWKEY0VyCCBurpv9Us4xnT4UBuejF3YO44wHp82OaExwTCXW068s7gjf1WOCoknfRIWog5y+nJj2MBIcSTpo5viT0Hk+JAUp2J7M82L7AuMuF1x6lpVcjTFA2GXxaqXLsNVgHvybAKOOZK18ygCtfU2wvEg0In68YVxD+O/eeRz15FseXbrBHfsT7jODp/EgDRCiRsjlchXUdjRxb53e+DXfwOTqZeEnAfe/t1GlYgt2RbEOOu10TYZQvfO2aE7IstgR/kq/X8o60N0mheKxJ0ThxBEwQpND9ak1MBWSCxEjQwcd2i1VAGMpcdB4DRyNuUFnmQRun1iMAZU1o2rVwur7b+gcdJMdrE8mOZhWdoYhvdvAwDPNELYep+nJGAEoiMjcmKXrCF+n0iOtIreoZJTTqxUGOs29jFX3WIt4oWBXPHgnJ9JddEAFllenj3HLBFOBeiuh1MVjPUcQ+r5gpev4A="
+    - AWS_ACCESS_KEY_ID=AKIAJOUI5OLXAVTSPAFQ
+    - TRAVISFOAM_DIR=$TRAVIS_BUILD_DIR
 
 before_install:
   - sudo sh -c "wget -O - http://dl.openfoam.org/gpg.key | apt-key add -"
@@ -14,4 +17,4 @@ before_install:
 before_script:
   - source /opt/openfoam-dev/etc/bashrc
 
-script: debuild -i -us -uc -b
+script: debuild -i -us -uc -b && deb-s3 upload --bucket atmosfoam-apt --codename=dev ../travis-cpp_0.1-0ubuntu1_amd64.deb
