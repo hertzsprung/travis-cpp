@@ -26,7 +26,7 @@ FOAM_USER_APPBIN := $(DH_ROOT_DIR)/build/bin
 #export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
 
 %:
-	./override_dh.sh "dh $@"
+	./override_dh.sh dh $@
 
 # dh_make generated override targets
 # This is example for Cmake (See https://bugs.debian.org/641051 )
@@ -40,7 +40,7 @@ override_dh_auto_build:
 	./override_dh_auto_build.sh
 
 override_dh_auto_test:
-	./override_dh.sh $(FOAM_USER_APPBIN)/testTravisFOAM
+	./override_dh.sh $(FOAM_USER_APPBIN)/testTravisFOAM --use-colour yes
 
 override_dh_auto_install:
 	$(INSTALL_PROGRAM) -D $(FOAM_USER_APPBIN)/travisFoamApp $(DESTDIR)$(bindir)/travisFoamApp
