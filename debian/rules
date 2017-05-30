@@ -1,47 +1,35 @@
 #!/usr/bin/make -f
 SHELL := /bin/bash
-INSTALL := install
+INSTALL := install -D
 INSTALL_PROGRAM := $(INSTALL)
+INSTALL_DATA := $(INSTALL) -m 644
 PREFIX := /usr
 exec_prefix := $(PREFIX)
 bindir := $(exec_prefix)/bin
+libdir := $(exec_prefix)/lib
 DESTDIR := debian/travis-cpp
 
 export FOAM_BASHRC = /opt/openfoam-dev/etc/bashrc
 export DH_ROOT_DIR = $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 export TRAVISFOAM_DIR = $(shell pwd)
+
 FOAM_USER_APPBIN := $(DH_ROOT_DIR)/build/bin
-# See debhelper(7) (uncomment to enable)
-# output every command that modifies files on the build system.
-#export DH_VERBOSE = 1
-
-
-# see FEATURE AREAS in dpkg-buildflags(1)
-#export DEB_BUILD_MAINT_OPTIONS = hardening=+all
-
-# see ENVIRONMENT in dpkg-buildflags(1)
-# package maintainers to append CFLAGS
-#export DEB_CFLAGS_MAINT_APPEND  = -Wall -pedantic
-# package maintainers to append LDFLAGS
-#export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
 
 %:
-	./override_dh.sh dh $@
-
-# dh_make generated override targets
-# This is example for Cmake (See https://bugs.debian.org/641051 )
-#override_dh_auto_configure:
-#	dh_auto_configure -- #	-DCMAKE_LIBRARY_PATH=$(DEB_HOST_MULTIARCH)
+	debian/override_dh.sh dh $@
 
 override_dh_auto_clean:
-	./override_dh_auto_clean.sh
+	debian/override_dh_auto_clean.sh
+	rm -rf $(DH_ROOT_DIR)/build/bin
+	rm -rf $(DH_ROOT_DIR)/build/lib
 
 override_dh_auto_build:
-	./override_dh_auto_build.sh
+	debian/override_dh_auto_build.sh
 
 override_dh_auto_test:
-	./override_dh.sh $(FOAM_USER_APPBIN)/testTravisFOAM --use-colour yes
+	debian/override_dh.sh $(FOAM_USER_APPBIN)/testTravisFOAM --use-colour yes
 
 override_dh_auto_install:
-	$(INSTALL_PROGRAM) -D $(FOAM_USER_APPBIN)/travisFoamApp $(DESTDIR)$(bindir)/travisFoamApp
+	$(INSTALL_PROGRAM) $(FOAM_USER_APPBIN)/travisFoamApp $(DESTDIR)$(bindir)/travisFoamApp
+	$(INSTALL_DATA) $(FOAM_USER_LIBBIN)/libTravisFOAM.so $(DESTDIR)$(libdir)/libTravisFoam.so
 

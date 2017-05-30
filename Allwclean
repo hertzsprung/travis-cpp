@@ -11,5 +11,4 @@ makeType=${1:-libso}
     exit 1
 }
 
-debian/override_dh_auto_build.sh
-testTravisFOAM
+debian/override_dh_auto_clean.sh
